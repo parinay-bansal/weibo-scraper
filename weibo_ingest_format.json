@@ -1,0 +1,12 @@
+{
+    "handle" : "$handle",
+    "created_date_time" : "$datetime",
+    "edited_date_time" : "$datetime",
+    "tweet_id" : "tweet id",
+    "content" : "content of tweeet",
+    "ingest_date_time" : "ingest datetime if tweet datetime not available",
+    "tweet_link" : "tweet link",
+    "num_pics" : "number of pics",
+    "num_videos" : "number of videos",
+    "pic_video_links" : "links for tweets and videos"
+}

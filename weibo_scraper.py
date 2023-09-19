@@ -38,6 +38,28 @@ _WeiboGetIndexResponse = Optional[WeiboGetIndexParser]
 
 
 @ws_handle
+def get_weibo_tweets_by_uid(uid: str, pages: int = None) -> _TweetsResponse:
+    """
+    Get raw weibo tweets by uid without any authorization
+    >>> from weibo_scraper import  get_weibo_tweets_by_uid
+    >>> for tweet in get_weibo_tweets_by_name(name='嘻红豆', pages=1):
+    >>>     print(tweet)
+    :param name: nick name which you want to search
+    :param pages: pages ,default all pages
+    :return: _TweetsResponse
+    """
+    # if name == '':
+    #     raise WeiboScraperException("`name` can not be blank!")
+    # res = exist_get_uid(name=name)
+    # exist = res.get("exist")
+    # uid = res.get("uid")
+    # if exist:
+    inner_tweet_container_id = get_tweet_containerid(uid=uid)
+    yield from get_weibo_tweets(tweet_container_id=inner_tweet_container_id, pages=pages)
+    # else:
+    #     raise WeiboScraperException("`{name}` can not find!".format(name=name))
+
+@ws_handle
 def get_weibo_tweets_by_name(name: str, pages: int = None) -> _TweetsResponse:
     """
     Get raw weibo tweets by nick name without any authorization

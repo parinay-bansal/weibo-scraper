@@ -12,9 +12,11 @@ from weibo_base.weibo_util import RequestProxy, WeiboApiException
 requests = RequestProxy()
 Response = Optional[dict]
 
-_GET_INDEX = "https://m.weibo.cn/api/container/getIndex"
-_GET_SECOND = "https://m.weibo.cn/api/container/getSecond"
-_COMMENTS_HOTFLOW = "https://m.weibo.cn/comments/hotflow"
+_weiboUTL = "https://m.weibo.cn/"
+_proxy_url = "https://5tfvtdrjfg.execute-api.ap-southeast-1.amazonaws.com/"
+_GET_INDEX = _proxy_url + "api/container/getIndex"
+_GET_SECOND = _proxy_url + "api/container/getSecond"
+_COMMENTS_HOTFLOW = _proxy_url + "comments/hotflow"
 
 
 def search_by_name(name: str) -> Response:
