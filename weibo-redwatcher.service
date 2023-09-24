@@ -1,0 +1,14 @@
+[Unit]
+Description=A script for scraping weibo and Ingeting to Redwatcher
+After=syslog.target network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/dragon-scraper
+ExecStart=/usr/bin/python3 weibo_ingest.py
+
+Restart=always
+RestartSec=120
+
+[Install]
+WantedBy=multi-user.target

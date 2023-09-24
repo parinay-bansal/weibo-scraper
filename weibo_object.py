@@ -9,7 +9,7 @@ class WeiboTweetObject(object):
         uid = str(self.uid)
         bid = self.bid
         self.tweet_link = "https://weibo.com/"+uid+"/"+bid
-        print(self.tweet_link)
+        #print(self.tweet_link)
         #return self._tweet_link
         # return link
 

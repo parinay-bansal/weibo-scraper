@@ -154,7 +154,9 @@ def get_formatted_weibo_tweets_by_name(name: str,
                                               with_comments=with_comments,
                                               pages=pages)
     else:
-        raise WeiboScraperException("`{name}` can not find!".format(name=name))
+        #raise WeiboScraperException("`{name}` can not find!".format(name=name))
+        print (f"Cannot find name {name}")
+        return None
 
 @ws_handle
 def get_weibo_tweets_formatted(tweet_container_id: str, with_comments: bool, pages: int = None,
@@ -218,6 +220,22 @@ def get_weibo_tweets_formatted(tweet_container_id: str, with_comments: bool, pag
     else:
         yield from weibo_tweets_gen()
 
+
+@ws_handle
+def get_tweets_by_uid(uid, with_comments = False, pages : int = None):
+    """
+        Since we faced some issues with getting tweets with nickname. we need a uid method to get the tweets
+        :param name: nick name which you want to search
+        :param with_comments , with comments
+        :param pages: pages ,default all pages
+        :return:  _TweetsResponse
+    """
+    if (uid is None):
+        print ("Uid Cannot be empty")
+        return None
+    
+    inner_tweet_containerid = get_tweet_containerid(uid=uid)
+    yield from get_weibo_tweets_formatted(tweet_container_id=inner_tweet_containerid, with_comments=with_comments, pages=pages)
 
 def weibo_get_index_parser(name: str = None, uid: str = None) -> _WeiboGetIndexResponse:
     """
